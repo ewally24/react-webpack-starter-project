@@ -1,0 +1,51 @@
+Inside Project Directory
+	-npm init (create new package.json file)
+	-npm install express@4 --save (install Express)
+	-create new file called server.js (Set up local serve in this file)
+		- Write Code to get Server on Port 3000
+	-Create A Folder called ("public") with a file index.html 
+
+	- in the root of the folder in git bash run node server.js
+
+Installing webpack (Inside Project Directory)
+==================
+npm install -g webpack@1.12.13
+npm install --save webpack@1.12.13 (Will Save webpack version to dependencies)
+npm install --save react@0.14.7 react-dom@0.14.7
+
+Install webpack as a dependencies on local machine (for development envirnoment)
+npm install --save-dev webpack@1.12.13 babel-core@6.5.1 babel-loader@6.2.2 babel-preset-es2015@6.5.0
+babel-preset-react@6.5.0
+
+In index.html 
+- Strip out script cdn tags in header
+- remove text/babel from script tag in body
+- rename app.jsx file bundle.js
+
+Since we are using JSX and ES6 we need to create a file to export or module easily
+- create webpack.config.js file in root of projectfolder
+	(inside webpack.config.js)
+
+	module.exports = {
+		entry: './public/app.js',
+		output: {
+			path: __dirname,
+			filename: './public/bundle.js'
+		},
+		resolve: {
+			extensions: ['','.js','.jsx']
+		}
+	}
+
+ Adding Babel & JSX support
+ ==========================
+ Since webpack throws in error when reading jsx code we need to install our 
+ babel-loader module from our dependencies in our package.json to our webpack.config.file
+
+ after resolve:
+
+ loaders: [
+ 	{
+ 	
+ 	}
+ ]
