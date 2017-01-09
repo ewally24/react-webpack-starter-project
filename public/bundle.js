@@ -49,90 +49,17 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 
-	var GreetingsMessage = React.createClass({
-		displayName: 'GreetingsMessage',
-
-		getDefaultProps: function getDefaultProps() {
-			return {
-				message: "Hi Welcome To The Wasteland!"
-			};
-		},
-		getInitialState: function getInitialState() {
-			return {
-				message: this.props.message
-			};
-		},
-		render: function render() {
-			var message = this.props.message;
-			return React.createElement(
-				'p',
-				null,
-				' ',
-				message,
-				' '
-			);
-		}
-	});
-
-	var RecipeForm = React.createClass({
-		displayName: 'RecipeForm',
-
-		onFormSubmit: function onFormSubmit(e) {
-			e.preventDefault();
-			var RecipeName = this.refs.recipe.value;
-			var RecipeMessage = this.refs.message.value;
-
-			var update = { recipe: RecipeName, message: RecipeMessage };
-			this.props.onNewUpdate(update);
-		},
-		render: function render() {
-			return React.createElement(
-				'form',
-				{ onSubmit: this.onFormSubmit },
-				React.createElement('input', { type: 'text', ref: 'recipe' }),
-				React.createElement('br', null),
-				React.createElement('textarea', { rows: '4', cols: '10', ref: 'message' }),
-				React.createElement('br', null),
-				React.createElement(
-					'button',
-					null,
-					'Submit'
-				)
-			);
-		}
-	});
-
 	var Greetings = React.createClass({
 		displayName: 'Greetings',
 
 		getDefaultProps: function getDefaultProps() {
 			return {
-				recipe: "Nuka Burgers",
-				message: "Now with Added Radiation!"
+				message: "Hello World!"
 			};
-		},
-		getInitialState: function getInitialState() {
-			return {
-				recipe: this.props.recipe,
-				message: this.props.message
-			};
-		},
-		handleNewUpdate: function handleNewUpdate(updates) {
-			if (updates.recipe.length > 0) {
-				this.setState({
-					recipe: updates.recipe
-				});
-			}
-
-			if (updates.message.length > 0) {
-				this.setState({
-					message: updates.message
-				});
-			}
 		},
 		render: function render() {
-			var recipe = this.state.recipe;
-			var message = this.state.message;
+
+			var message = this.props.message;
 			return React.createElement(
 				'div',
 				null,
@@ -140,11 +67,9 @@
 					'h4',
 					null,
 					' ',
-					recipe,
-					' Will Give You Power Ups! '
-				),
-				React.createElement(GreetingsMessage, { message: message }),
-				React.createElement(RecipeForm, { onNewUpdate: this.handleNewUpdate })
+					message,
+					' '
+				)
 			);
 		}
 	});
